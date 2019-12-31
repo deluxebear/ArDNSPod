@@ -115,7 +115,7 @@ arDdnsInfo() {
     local domainID recordID recordIP
     # Get domain ID
     domainID=$(arApiPost "Domain.Info" "domain=${1}")
-    domainID=$(echo $domainID | sed 's/.*{"id":"\([0-9]*\)".*/\1/')
+    domainID=$(echo $domainID | sed 's/.*"id":"\([0-9]*\)".*/\1/')
     
     # Get Record ID
     recordID=$(arApiPost "Record.List" "domain_id=${domainID}&sub_domain=${2}")
@@ -157,7 +157,7 @@ arDdnsUpdate() {
     local domainID recordID recordRS recordCD recordIP myIP
     # Get domain ID
     domainID=$(arApiPost "Domain.Info" "domain=${1}")
-    domainID=$(echo $domainID | sed 's/.*{"id":"\([0-9]*\)".*/\1/')
+    domainID=$(echo $domainID | sed 's/.*"id":"\([0-9]*\)".*/\1/')
     
     # Get Record ID
     recordID=$(arApiPost "Record.List" "domain_id=${domainID}&sub_domain=${2}")
